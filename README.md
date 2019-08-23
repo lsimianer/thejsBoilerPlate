@@ -1,2 +1,0 @@
-# thejsBoilerPlate
-Created with CodeSandbox
