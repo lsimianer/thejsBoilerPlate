@@ -1,14 +1,70 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Parcel Sandbox</title>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="./src/styles.css" />
-  </head>
+<!doctype html>
+    <html lang="en"> 
+        <head> 
+            <title>Three.js Tutorial</title> 
+            <meta charset="utf-8"> 
+    </head> 
+    
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r71/three.min.js"></script> 
 
-  <body>
-    <div id="container"></div>
+<script> 
+//Declare three.js variables
+var camera, scene, renderer, cube;
+	 
+     //assign three.js objects to each variable
+     function init(){
+          
+         //camera
+         camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+          
+         //scene
+         scene = new THREE.Scene();
+          
+         //renderer
+         renderer = new THREE.WebGLRenderer();
+         //set the size of the renderer
+         renderer.setSize( window.innerWidth, window.innerHeight );
+          
+         //add the renderer to the html document body
+         document.body.appendChild( renderer.domElement );
+          
+ 
+     }
+ 
+     function addCube(){
+ 
+         //create box geometry object
+         var geometry = new THREE.BoxGeometry( 2, 5, 2 );
+         //create material with colour
+         var material = new THREE.MeshBasicMaterial( { color: 0x0000ff } );
+         //combine geometry with material to create the cube
+         cube = new THREE.Mesh( geometry, material );
+         //add the cube to the scene
+         scene.add( cube );
+ 
+         //set the camera position
+         camera.position.z = 10;
+     }
+ 
+ 
+     function render() {
+         //get the frame
+         requestAnimationFrame( render );
+ 
+         //animate the cube
+         cube.rotation.x += 0.0;
+         cube.rotation.y += 0.001;
+ 
+ 
+         //render the scene
+         renderer.render( scene, camera );
+     }
+     
+     init();
+     addCube();
+     render();
 
-    <script src="src/index.js"></script>
-  </body>
+</script> 
+</body> 
 </html>
